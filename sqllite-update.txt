@@ -1,0 +1,33 @@
+❯ sqlite3 practice.db
+SQLite version 3.39.5 2022-10-14 20:58:05
+Enter ".help" for usage hints.
+sqlite> .read seed-data.sql
+1|Ryan|Pond
+2|Sky|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|Song
+sqlite> .table
+friends
+sqlite> UPDATE friends
+   ...> SET last_name = 'Blue'
+   ...> WHERE first_name = 'Tyler'
+   ...>   AND last_name = 'Sky';
+sqlite> SELECT * FROM friends WHERE first_name = "Tyler";
+sqlite> SELECT * FROM friends WHERE first_name = "Sky";
+2|Sky|Tyler
+sqlite> UPDATE friends
+   ...> SET last_name = 'Blue'
+   ...> WHERE first_name = 'Tyler'
+   ...> 
+   ...> ;
+sqlite> UPDATE friends
+   ...> SET last_name = 'Blue'
+   ...> WHERE first_name = 'Sky'
+   ...>   AND last_name = 'Tyler';
+sqlite> SELECT * FROM friends WHERE first_name = "Sky";
+2|Sky|Blue
+sqlite> UPDATE friends SET first_name= NULL WHERE id = 5;
+Runtime error: NOT NULL constraint failed: friends.first_name (19)
+sqlite> UPDATE friends SET first_name= "blueMonkey"  WHERE id = 5;
+sqlite> ^D
